@@ -287,7 +287,6 @@ static int vsprintf(char *buf, const char *fmt, va_list args)
 void serial_printf (const char *fmt, ...)
 {
 	va_list args;
-	uint i;
 	char printbuffer[CFG_PBSIZE];
 
 	va_start (args, fmt);
@@ -295,7 +294,7 @@ void serial_printf (const char *fmt, ...)
 	/* For this to work, printbuffer must be larger than
 	 * anything we ever want to print.
 	 */
-	i = vsprintf (printbuffer, fmt, args);
+	(void)vsprintf (printbuffer, fmt, args);
 	va_end (args);
 
 	/* Print the string */
