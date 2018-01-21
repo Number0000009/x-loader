@@ -112,7 +112,7 @@ int disk_read (__u32 startblock, __u32 getsize, __u8 * bufptr)
 int
 fat_register_device(block_dev_desc_t *dev_desc, int part_no)
 {
-	unsigned char buffer[SECTOR_SIZE];
+	volatile unsigned char buffer[SECTOR_SIZE];
 
 	if (!dev_desc->block_read)
 		return -1;
